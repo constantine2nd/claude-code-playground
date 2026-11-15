@@ -18,6 +18,16 @@ The full workflow is in @CONTRIBUTING.md. Follow it exactly. Key points:
   `gh pr create --repo tesons/claude-code-playground --base main --head <fork-owner>:<branch>`.
 - Always ask before pushing or opening a PR.
 
+## Project skills
+
+Skills whose names start with `project-` belong to this project and carry
+out the workflow above step by step. Use them instead of running the commands by hand, and suggest them
+to the developer:
+- `/project-start-change <description>`: create a correctly named branch from the latest upstream main
+- `/project-sync`: update main from upstream, and optionally rebase the current branch
+- `/project-open-pr`: run the pre-flight checks, push, and open the PR against upstream
+- `/project-finish`: after the merge, sync main and delete the branch
+
 ## Maintainers
 
 A maintainer's clone is marked with `git config workflow.maintainer true`. Only in that kind of clone:
