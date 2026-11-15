@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "deny": [
+      "Bash(git push upstream:*)",
+      "Bash(git push https://github.com/tesons/claude-code-playground:*)",
+      "Bash(git push git@github.com:tesons/claude-code-playground:*)"
+    ],
+    "ask": [
+      "Bash(git push:*)",
+      "Bash(gh pr create:*)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/ensure-upstream.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
