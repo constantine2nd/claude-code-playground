@@ -36,9 +36,11 @@ Fix it with `git remote set-url origin git@github.com:<your-username>/claude-cod
 Start every change from the latest `upstream/main`, on a new branch:
 ```
 git fetch upstream
-git switch -c feature/<short-desc> upstream/main
+git switch --no-track -c feature/<short-desc> upstream/main
 ```
-Branch names: `feature/…`, `fix/…`, `docs/…`.
+Branch names must start with `feature/`, `fix/` or `docs/`.
+`--no-track` stops the branch from tracking `upstream/main`. Your first
+`git push -u origin …` makes it track your fork's copy of the branch instead.
 
 Keep your fork's `main` in sync. Never commit to `main` directly.
 ```
@@ -68,3 +70,20 @@ Before opening a PR:
 - Make sure tests and linters pass.
 - Keep each PR to one logical change.
 - Write commit messages in the imperative mood ("Add X", not "Added X").
+
+## Maintainers
+
+Maintainers have write access to `tesons/claude-code-playground` and work from a clone of it
+rather than from a fork. Mark that clone once, so Claude Code and the setup hook treat it
+as a maintainer clone:
+```
+git config workflow.maintainer true
+```
+The process is the same as for contributors, except that branches live in the original repo:
+```
+git fetch origin
+git switch --no-track -c docs/<short-desc> origin/main
+git push -u origin docs/<short-desc>
+```
+Then open the PR in the browser. **Never push to `main` directly**, not even as a
+maintainer. Every change goes in through a reviewed PR.
