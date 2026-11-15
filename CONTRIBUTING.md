@@ -31,6 +31,19 @@ pull request from it.
 If `origin` shows `tesons/...`, you cloned the original repo instead of your fork.
 Fix it with `git remote set-url origin git@github.com:<your-username>/claude-code-playground.git`.
 
+## Shortcuts in Claude Code
+
+If you use Claude Code, these project skills (names starting with `project-`) do the steps below for you:
+
+| Command | What it does |
+|---|---|
+| `/project-start-change <description>` | Creates a branch like `feature/<name>` from the latest `upstream/main` |
+| `/project-sync` | Updates `main` from upstream, and optionally rebases your branch |
+| `/project-open-pr` | Runs the checks, pushes your branch, and opens the PR against `tesons` |
+| `/project-finish` | After the merge: syncs `main` and deletes the branch |
+
+The manual commands are below, for working without Claude or for understanding what the skills do.
+
 ## Daily workflow
 
 Start every change from the latest `upstream/main`, on a new branch:
